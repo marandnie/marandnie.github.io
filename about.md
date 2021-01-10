@@ -13,4 +13,4 @@ title: About
 permalink: /about/
 ---
 
-This is my personal blog. I'm a student but also a teacher. Feel free to send me an email. We are all learning here.
+Este es mi blog personal, mi portfolio. Voy a llenarlo con los proyectos que vaya desarrollando a lo largo del tiempo. Para contrataciones u otras cuestiones, pueden escribirme por correo electrónico. Espero que disfruten de leer sobre mi tanto como yo disfruto del desarrollo. Gracias!
