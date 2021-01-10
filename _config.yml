@@ -23,7 +23,7 @@ email: mandieto@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Este sitio fue diseñado para poder mostrar un poco de lo que sé hacer. Me interesa que la gente pueda aprender a partir de los ejemplos, si tenés alguna duda no dudes en contactarme. Please be kind. Rewind.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://mandieto.com.ar" # the base hostname & protocol for your site, e.g. http://example.com
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: marinieto
 github_username:  marandnie
 
