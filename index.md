@@ -4,7 +4,3 @@
 
 layout: home
 ---
-
-Proyectos
-Código
-Sobre mi
