@@ -13,4 +13,6 @@ title: About
 permalink: /about/
 ---
 
-Este es mi blog personal, mi portfolio. Voy a llenarlo con los proyectos que vaya desarrollando a lo largo del tiempo. Para contrataciones u otras cuestiones, pueden escribirme por correo electrónico. Espero que disfruten de leer sobre mi tanto como yo disfruto del desarrollo. Gracias!
+Mi nombre es Marina Nieto. Soy estudiante de la Tecnicatura Universitaria en Programación Informática de la UNSAM. Este es mi blog personal y portfolio. Soy una persona proactiva y me encanta trabajar en equipo y resolver problemas. Voy a llenarlo con los proyectos que vaya desarrollando a lo largo del tiempo.
+
+Para contrataciones u otras cuestiones, pueden escribirme por correo electrónico. Espero que disfruten de leer sobre mi tanto como yo disfruto del desarrollo. Gracias!
