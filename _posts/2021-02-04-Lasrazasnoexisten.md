@@ -63,5 +63,7 @@ Ciertos estudios sobre el cociente intelectual en hijos adoptados, en los que se
 Sin embargo, si ordenamos de menor a mayor los CI de los hijos adoptados, se observa que este orden se correlaciona perfectamente con el de los CI de los padres biológicos. Aquí se podría concluir que hay un factor hereditario que está condicionando, no el valor exacto de CI, sino un rango con topes mínimo y máximo posibles, y que el ambiente generado por los padres adoptantes determina el valor dentro de ese rango. Podríamos criticar esto diciendo: “Y cómo sé que el componente “hereditario" es realmente hereditario y no congénito? ¿Cómo sé que esto no es una consecuencia de efectos del ambiente durante la vida intrauterina? En efecto, no existe hasta ahora, pese a las técnicas asistidas, ningún mamífero que haya nacido en un laboratorio y que haya pasado por el útero de una madre. Por lo tanto, en el caso de los humanos, esos nueve meses de vida intrauterina están sujetos a una serie de variables ambientales que influyen sobre el desarrollo del feto que se está generando dentro, desde la alimentación de la madre hasta el estrés y los traumas que pudo haber sufrido esa madre en su medio ambiente social y económico: si hubiera diferencias, no podría distinguirse con facilidad si son heredadas o simplemente congénitas.
 
 [1] Paabo, S., Nature, 421, 2003, pp. 409-412.
+
 [2] Noah, A. y otros, Science 298, 2002, pp. 2381-2385.
+
 [3] King, M. C. y Motulsky, A. G., Science, 298, pp. 2342, 2002.
