@@ -13,6 +13,6 @@ title: About
 permalink: /about/
 ---
 
-Mi nombre es Marina Nieto. Soy estudiante de la Tecnicatura Universitaria en Programación Informática de la UNSAM. Este es mi blog personal y portfolio. Soy una persona proactiva y me encanta trabajar en equipo y resolver problemas. Voy a llenarlo con los proyectos que vaya desarrollando a lo largo del tiempo.
-
+Mi nombre es Marina Nieto. Soy estudiante de la [Tecnicatura Universitaria en Programación Informática](https://www.unsam.edu.ar/escuelas/ciencia/107/ciencia/programacion-informatica) de la [UNSAM](https://www.unsam.edu.ar). Este es mi blog personal y portfolio. 
+Voy a llenarlo con los proyectos que vaya desarrollando a lo largo del tiempo. Soy una persona proactiva y me encanta trabajar en equipo y resolver problemas.
 Para contrataciones u otras cuestiones, pueden escribirme por correo electrónico. Espero que disfruten de leer sobre mi tanto como yo disfruto del desarrollo. Gracias!
