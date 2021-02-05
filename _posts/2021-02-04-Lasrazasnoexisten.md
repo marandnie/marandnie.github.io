@@ -1,14 +1,12 @@
 ---
 layout: post
-title:  "Las razas no existen"
+title:  "La humanidad del genoma"
 date:   2020-02-05 22:00:00 -0300
 categories: Biología
 ---
 
 
-# Las Razas no existen
-
-Las razas no existen, por Alberto Kornblihtt en "La humanidad del genoma"
+# Las razas no existen, por Alberto Kornblihtt en "La humanidad del genoma"
 
 Podemos definir una especie como un conjunto de individuos capaces de dar descendencia fértil. El caballo es una especie porque sus individuos (caballos y yeguas, se entiende), por reproducción sexual, pueden dar descendencia que a su vez se reproduzca sexualmente. El burro es una especie por razones similares. Sin embargo, burro y caballo son especies diferentes si bien pueden dar descendencia -las mulas-, estas son estériles. En términos científicos se dice que entre los individuos que pertenecen a la misma especie existe libre flujo de genes.
 
