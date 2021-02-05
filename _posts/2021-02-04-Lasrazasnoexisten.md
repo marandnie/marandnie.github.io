@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "La humanidad del genoma"
-date:   2020-02-05 22:00:00 -0300
+date:   2020-02-04 22:00:00 -0300
 categories: Biología
 ---
 
