@@ -14,5 +14,7 @@ permalink: /work/
 ---
 
 [Convertidor numerico Hexa / Binario / Decimal](https://mandieto.com.ar/hex_calculator)
+
 [Vitamin D Calculator](https://mandieto.com.ar/vitaminD_IU_Calculator/)
+
 [B12](https://mandieto.com.ar/)
