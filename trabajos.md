@@ -9,7 +9,7 @@
 #[jekyll-organization]: https://github.com/jekyll
 
 layout: page
-title: SPD
+title: Trabajos
 permalink: /work/
 ---
 
