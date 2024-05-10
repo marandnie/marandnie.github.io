@@ -15,6 +15,5 @@ permalink: /spd/
 
 
 
-https://mandieto.com.ar/hex_calculator
 
 [Convertidor numerico Hexa / Binario / Decimal](https://mandieto.com.ar/hex_calculator)
