@@ -35,6 +35,7 @@ plugins:
 header_pages:
   - about.md
   - trabajos.md
+  - spd/index.html
   
 # Exclude from processing.
 # The following items will not be processed, by default.
