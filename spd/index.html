@@ -1,0 +1,831 @@
+---
+layout: page
+title: SPD — Primer Parcial
+permalink: /spd/
+---
+
+<style>
+  #quiz-wrap {
+    font-family: inherit;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  #quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  #progress-bar-wrap {
+    width: 100%;
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  #progress-bar {
+    height: 100%;
+    background: #2a7ae2;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+
+  #question-card {
+    background: #fff;
+    border: 1px solid #e1e4e8;
+    border-radius: 10px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    min-height: 160px;
+  }
+
+  #question-number {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #2a7ae2;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+
+  #question-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #1a1a2e;
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  #multi-hint {
+    font-size: 0.8rem;
+    color: #e07000;
+    margin-bottom: 16px;
+    display: none;
+    font-style: italic;
+  }
+
+  .option-btn {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    text-align: left;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    border: 2px solid #e1e4e8;
+    border-radius: 8px;
+    background: #fafafa;
+    cursor: pointer;
+    font-size: 0.97rem;
+    color: #333;
+    transition: border-color 0.15s, background 0.15s;
+    line-height: 1.4;
+  }
+
+  .option-btn:hover:not(:disabled) {
+    border-color: #2a7ae2;
+    background: #f0f6ff;
+  }
+
+  .option-btn.selected {
+    border-color: #2a7ae2;
+    background: #e8f0fe;
+  }
+
+  .option-btn.correct {
+    border-color: #28a745;
+    background: #eafaf1;
+    color: #1a5c2e;
+  }
+
+  .option-btn.wrong {
+    border-color: #dc3545;
+    background: #fdf0f2;
+    color: #7a1020;
+  }
+
+  .option-btn.missed {
+    border-color: #28a745;
+    background: #eafaf1;
+    color: #1a5c2e;
+    opacity: 0.75;
+  }
+
+  .option-btn:disabled {
+    cursor: default;
+  }
+
+  .option-indicator {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-top: 1px;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .option-btn.selected .option-indicator {
+    border-color: #2a7ae2;
+    background: #2a7ae2;
+    color: white;
+  }
+
+  .option-btn.correct .option-indicator {
+    border-color: #28a745;
+    background: #28a745;
+    color: white;
+  }
+
+  .option-btn.wrong .option-indicator {
+    border-color: #dc3545;
+    background: #dc3545;
+    color: white;
+  }
+
+  .option-btn.missed .option-indicator {
+    border-color: #28a745;
+    background: #28a745;
+    color: white;
+  }
+
+  #feedback-box {
+    display: none;
+    margin-top: 18px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+
+  #feedback-box.ok {
+    background: #eafaf1;
+    border: 1px solid #28a745;
+    color: #1a5c2e;
+  }
+
+  #feedback-box.fail {
+    background: #fdf0f2;
+    border: 1px solid #dc3545;
+    color: #7a1020;
+  }
+
+  #quiz-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    justify-content: flex-end;
+  }
+
+  .quiz-btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+  }
+
+  .quiz-btn:active { transform: scale(0.97); }
+  .quiz-btn:disabled { opacity: 0.4; cursor: default; }
+
+  #btn-check {
+    background: #2a7ae2;
+    color: white;
+  }
+
+  #btn-check:hover:not(:disabled) { background: #1a5cbf; }
+
+  #btn-next {
+    background: #333;
+    color: white;
+    display: none;
+  }
+
+  #btn-next:hover { background: #111; }
+
+  /* Results screen */
+  #results-screen {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  #score-circle {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 8px solid #2a7ae2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
+
+  #score-number {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #2a7ae2;
+    line-height: 1;
+  }
+
+  #score-total {
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  #score-label {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1a1a2e;
+  }
+
+  #score-pct {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 32px;
+  }
+
+  #btn-retry {
+    background: #2a7ae2;
+    color: white;
+    padding: 12px 36px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  #btn-retry:hover { background: #1a5cbf; }
+
+  #start-screen {
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  #start-screen h2 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: #1a1a2e;
+  }
+
+  #start-screen p {
+    color: #555;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  #btn-start {
+    background: #2a7ae2;
+    color: white;
+    padding: 13px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  #btn-start:hover { background: #1a5cbf; }
+
+  .subject-badge {
+    display: inline-block;
+    background: #e8f0fe;
+    color: #2a7ae2;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+</style>
+
+<div id="quiz-wrap">
+
+  <!-- Start screen -->
+  <div id="start-screen">
+    <div class="subject-badge">SPD · UNSAM · 2026</div>
+    <h2>Primer Parcial — Teórico</h2>
+    <p>25 preguntas de opción múltiple.<br>Algunas preguntas tienen más de una respuesta correcta.</p>
+    <button class="quiz-btn" id="btn-start" onclick="startQuiz()">Comenzar</button>
+  </div>
+
+  <!-- Quiz screen -->
+  <div id="quiz-screen" style="display:none">
+    <div id="quiz-header">
+      <span id="q-counter">Pregunta 1 de 25</span>
+      <span id="q-score-live">Puntaje: 0</span>
+    </div>
+    <div id="progress-bar-wrap">
+      <div id="progress-bar" style="width:0%"></div>
+    </div>
+    <div id="question-card">
+      <div id="question-number">Pregunta 1</div>
+      <div id="question-text"></div>
+      <div id="multi-hint">⚠ Esta pregunta tiene más de una respuesta correcta.</div>
+      <div id="options-list"></div>
+      <div id="feedback-box"></div>
+    </div>
+    <div id="quiz-actions">
+      <button class="quiz-btn" id="btn-check" onclick="checkAnswer()" disabled>Verificar</button>
+      <button class="quiz-btn" id="btn-next" onclick="nextQuestion()">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- Results screen -->
+  <div id="results-screen">
+    <div id="score-circle">
+      <div id="score-number">0</div>
+      <div id="score-total">de 25</div>
+    </div>
+    <div id="score-label"></div>
+    <div id="score-pct"></div>
+    <button id="btn-retry" onclick="startQuiz()">Volver a intentar</button>
+  </div>
+
+</div>
+
+<script>
+const ALL_QUESTIONS = [
+  {
+    q: "En los sistemas numéricos posicionales y basados en peso constante, el peso de cada dígito se calcula como:",
+    opts: [
+      "Base elevada a la base.",
+      "Posición elevada al cuadrado.",
+      "Posición elevada a la base.",
+      "Número elevado a la posición.",
+      "2 elevada a la posición.",
+      "Base elevada a la posición.",
+      "10 elevada a la posición.",
+      "2 elevada a la base."
+    ],
+    correct: [5]
+  },
+  {
+    q: "Una compuerta 3 estados u \"Open Collector\" se caracteriza por:",
+    opts: [
+      "Su entrada puede estar en alta impedancia.",
+      "Su salida puede estar en alta impedancia.",
+      "Sus entradas están conectadas a masa (potencial de referencia).",
+      "Su salida está conectada a masa (potencial de referencia).",
+      "No tiene salidas ni entradas."
+    ],
+    correct: [1]
+  },
+  {
+    q: "A la combinación binaria 010111010b de 9 bits le faltan 3 bits. Marcar todas las ternas de 3 bits que podrá agregar para que sea de paridad par:",
+    opts: [
+      "000",
+      "100",
+      "001",
+      "101",
+      "010",
+      "110",
+      "011",
+      "111"
+    ],
+    correct: [1, 2, 4, 7]
+  },
+  {
+    q: "Si poseemos un dispositivo que a su entrada le entregamos un código binario de n bits y en sus 2^n salidas obtenemos un \"1\" en una sola de ellas correspondiente al valor decimal del binario ingresado, el dispositivo es un...",
+    opts: [
+      "Multiplexor.",
+      "Conversor de código.",
+      "Decodificador.",
+      "Demultiplexor.",
+      "Codificador.",
+      "Transductor."
+    ],
+    correct: [2]
+  },
+  {
+    q: "La estructura de un ordenador es:",
+    opts: [
+      "Buses, E/S, Memoria Principal, CPU.",
+      "CPU, E/S, Buses, Memoria de Control.",
+      "Memoria Principal, ALU, Buses, E/S.",
+      "CPU, ALU, E/S, Buses."
+    ],
+    correct: [0]
+  },
+  {
+    q: "Las arquitecturas de Von Neumann y Harvard se enmarcan en la siguiente clasificación de Flynn:",
+    opts: [
+      "MIMD",
+      "DIMD",
+      "MISD",
+      "DISD",
+      "SIMD",
+      "SISD"
+    ],
+    correct: [5]
+  },
+  {
+    q: "Si digo que una estructura tiene Memoria de control, lógica secuencial y unidad de control de registros y decodificadores, me refiero a:",
+    opts: [
+      "La unidad de entrada/salida.",
+      "La CPU.",
+      "La memoria principal.",
+      "La ALU.",
+      "El sistema de interconexión.",
+      "La memoria ROM.",
+      "La Unidad de control.",
+      "La memoria Caché."
+    ],
+    correct: [6]
+  },
+  {
+    q: "Existen varios sistemas binarios de numeración con signo. ¿Cuál se utiliza en los cálculos aritméticos de la ALU?",
+    opts: [
+      "Complemento a 1.",
+      "Signo y magnitud.",
+      "Complemento a 2.",
+      "Exceso 2 a la (n-1)."
+    ],
+    correct: [2]
+  },
+  {
+    q: "¿Qué sistema de representación numérica binaria con signo posee el siguiente rango de representación?: {−(2^(n−1)) ; +(2^(n−1) −1)}",
+    opts: [
+      "Complemento a 2.",
+      "Exceso 2 a la (n-1).",
+      "Signo y magnitud.",
+      "Complemento a 1."
+    ],
+    correct: [0, 1]
+  },
+  {
+    q: "En operaciones binarias dentro de nuestro procesador de estudio, indicar el conjunto de flags que se encienden (\"1\") indicando que una operación resultó con sobreflujo (overflow):",
+    opts: [
+      "SF = con signo, OF = sin signo.",
+      "CF = con signo, SF = sin signo.",
+      "CF = sin signo, OF = con signo.",
+      "CF = sin signo, SF = con signo."
+    ],
+    correct: [2]
+  },
+  {
+    q: "En operaciones binarias con signo, indicar las operaciones que arrojarán sobreflujo (overflow):",
+    opts: [
+      "000 + 100",
+      "111 + 000",
+      "100 + 100",
+      "010 + 010",
+      "111 + 110",
+      "001 + 010"
+    ],
+    correct: [2, 3]
+  },
+  {
+    q: "Las posiciones fraccionarias del sistema binario tienen los siguientes pesos:",
+    opts: [
+      "0, 1/2, 1/4, 1/8, 1/16, ...",
+      "1/2, 1/4, 1/8, 1/16, ...",
+      "0, −1, −2, −4, −8, −16, ...",
+      "−1, −2, −3, −4, −5, ..."
+    ],
+    correct: [1]
+  },
+  {
+    q: "Se obtiene el menor error de representación en cifras binarias reales con coma (o punto fijo) si:",
+    opts: [
+      "Truncamos solamente.",
+      "No redondeamos y truncamos.",
+      "Redondeamos y truncamos.",
+      "No truncamos."
+    ],
+    correct: [2]
+  },
+  {
+    q: "¿Qué señales de un Flip-Flop se utilizan para operarlo en forma sincrónica?",
+    opts: [
+      "SET y CLR.",
+      "SET y Q.",
+      "D y Q.",
+      "CLK y CLR.",
+      "Q y CLR.",
+      "D y CLK."
+    ],
+    correct: [5]
+  },
+  {
+    q: "¿Qué tiempo característico de una memoria indica el que se tarda desde que se realiza un pedido de lectura hasta que el mismo queda satisfecho?",
+    opts: [
+      "Cycle Time (Tiempo de ciclo).",
+      "Access Time (Tiempo de acceso).",
+      "Write Time (Tiempo de escritura).",
+      "Read Time (Tiempo de lectura).",
+      "CAS Time (Tiempo de CAS).",
+      "Hold Time (Tiempo de Establecimiento)."
+    ],
+    correct: [1]
+  },
+  {
+    q: "Las memorias más rápidas son las:",
+    opts: [
+      "DRAM.",
+      "SRAM.",
+      "SDRAM.",
+      "NPROM.",
+      "EEPROM.",
+      "PROM."
+    ],
+    correct: [1]
+  },
+  {
+    q: "Las propiedades de \"pipelining\" e \"interleaving\" son características de las memorias:",
+    opts: [
+      "EEPROM.",
+      "DRAM.",
+      "SRAM.",
+      "DDR."
+    ],
+    correct: [3]
+  },
+  {
+    q: "Si decimos que cualquier bloque de la memoria principal puede alojarse en un único renglón de la memoria caché, diremos que su organización es:",
+    opts: [
+      "Mapeo Asociado.",
+      "Conjuntos Directos.",
+      "Asociativa.",
+      "Mapeo Directo."
+    ],
+    correct: [3]
+  },
+  {
+    q: "¿En qué organización de memoria caché podremos valernos de la ayuda de una memoria asociativa?",
+    opts: [
+      "Mapeo Asociado.",
+      "Conjuntos Directos.",
+      "Asociativa.",
+      "Mapeo Directo."
+    ],
+    correct: [2]
+  },
+  {
+    q: "Un \"Page Fault\" o fallo de página se dará cuando la página que está buscando la MMU no se encuentra en:",
+    opts: [
+      "La memoria virtual.",
+      "La memoria principal.",
+      "La memoria caché.",
+      "Los registros."
+    ],
+    correct: [1]
+  },
+  {
+    q: "La estructura de las instrucciones de los procesadores se caracteriza por comenzar con un:",
+    opts: [
+      "Código de operación u operación.",
+      "Un objeto o dato.",
+      "Un dato o parámetro.",
+      "Un parámetro o dirección."
+    ],
+    correct: [0]
+  },
+  {
+    q: "Durante la ejecución de la instrucción MOV AX,[200h], el contador de programa o PC se comportará de la siguiente manera para resolver el movimiento del contenido al AX:",
+    opts: [
+      "Habitual.",
+      "Indirección.",
+      "Salto.",
+      "Condicional."
+    ],
+    correct: [1]
+  },
+  {
+    q: "El ciclo de instrucción de nuestro procesador será el siguiente, teniendo en cuenta que la instrucción a ejecutar tiene operandos:",
+    opts: [
+      "Instruction Fetch > Instruction Decode > Operand Fetch > Execution.",
+      "Instruction Decode > Operand Fetch > Instruction Fetch > Execution.",
+      "Instruction Decode > Instruction Fetch > Operand Fetch > Execution.",
+      "Operand Fetch > Instruction Fetch > Instruction Decode > Execution."
+    ],
+    correct: [0]
+  },
+  {
+    q: "Los problemas de los Pipelines son los siguientes:",
+    opts: [
+      "De datos, control y estructura.",
+      "De datos, RAW, WAW y WAR.",
+      "De control, estructura y predicción de saltos.",
+      "De estructura, control y forwarding."
+    ],
+    correct: [0]
+  },
+  {
+    q: "Un procesador con una pequeña cantidad de instrucciones en su SET, instrucciones de un solo clock, registros de propósito general, pocos formatos de direccionamiento, es un procesador:",
+    opts: [
+      "CISC.",
+      "RISC.",
+      "SISD.",
+      "MISC."
+    ],
+    correct: [1]
+  }
+];
+
+// --- State ---
+let questions = [];
+let current = 0;
+let score = 0;
+let selected = [];
+let answered = false;
+
+// --- Shuffle helper ---
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function prepareQuestions() {
+  questions = shuffle(ALL_QUESTIONS).map(q => {
+    // shuffle options but track which are correct
+    const indexed = q.opts.map((o, i) => ({ text: o, isCorrect: q.correct.includes(i) }));
+    const shuffled = shuffle(indexed);
+    return {
+      q: q.q,
+      opts: shuffled.map(o => o.text),
+      correct: shuffled.map((o, i) => o.isCorrect ? i : -1).filter(i => i !== -1),
+      multi: q.correct.length > 1
+    };
+  });
+}
+
+function startQuiz() {
+  prepareQuestions();
+  current = 0;
+  score = 0;
+  selected = [];
+  answered = false;
+
+  document.getElementById('start-screen').style.display = 'none';
+  document.getElementById('results-screen').style.display = 'none';
+  document.getElementById('quiz-screen').style.display = 'block';
+
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = questions[current];
+  selected = [];
+  answered = false;
+
+  document.getElementById('question-number').textContent = `Pregunta ${current + 1}`;
+  document.getElementById('question-text').textContent = q.q;
+  document.getElementById('q-counter').textContent = `Pregunta ${current + 1} de ${questions.length}`;
+  document.getElementById('q-score-live').textContent = `Puntaje: ${score}`;
+
+  const hint = document.getElementById('multi-hint');
+  hint.style.display = q.multi ? 'block' : 'none';
+
+  const fb = document.getElementById('feedback-box');
+  fb.style.display = 'none';
+  fb.className = '';
+
+  const btnCheck = document.getElementById('btn-check');
+  const btnNext = document.getElementById('btn-next');
+  btnCheck.style.display = 'inline-block';
+  btnCheck.disabled = true;
+  btnNext.style.display = 'none';
+
+  const pct = (current / questions.length) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+
+  const list = document.getElementById('options-list');
+  list.innerHTML = '';
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.dataset.idx = i;
+    btn.innerHTML = `<span class="option-indicator">${String.fromCharCode(65 + i)}</span><span>${opt}</span>`;
+    btn.addEventListener('click', () => toggleOption(i));
+    list.appendChild(btn);
+  });
+}
+
+function toggleOption(idx) {
+  if (answered) return;
+  const q = questions[current];
+  const btn = document.querySelector(`.option-btn[data-idx="${idx}"]`);
+
+  if (q.multi) {
+    // multi-select toggle
+    if (selected.includes(idx)) {
+      selected = selected.filter(i => i !== idx);
+      btn.classList.remove('selected');
+    } else {
+      selected.push(idx);
+      btn.classList.add('selected');
+    }
+  } else {
+    // single-select: deselect others
+    document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    selected = [idx];
+    btn.classList.add('selected');
+  }
+
+  document.getElementById('btn-check').disabled = selected.length === 0;
+}
+
+function checkAnswer() {
+  if (answered) return;
+  answered = true;
+
+  const q = questions[current];
+  const correctSet = new Set(q.correct);
+  const selectedSet = new Set(selected);
+
+  // Check if fully correct
+  const isCorrect =
+    q.correct.every(i => selectedSet.has(i)) &&
+    selected.every(i => correctSet.has(i));
+
+  if (isCorrect) score++;
+
+  // Color the buttons
+  document.querySelectorAll('.option-btn').forEach(btn => {
+    const idx = parseInt(btn.dataset.idx);
+    btn.disabled = true;
+    if (correctSet.has(idx) && selectedSet.has(idx)) {
+      btn.classList.remove('selected');
+      btn.classList.add('correct');
+    } else if (!correctSet.has(idx) && selectedSet.has(idx)) {
+      btn.classList.remove('selected');
+      btn.classList.add('wrong');
+    } else if (correctSet.has(idx) && !selectedSet.has(idx)) {
+      btn.classList.add('missed');
+    }
+  });
+
+  // Feedback
+  const fb = document.getElementById('feedback-box');
+  fb.style.display = 'block';
+  if (isCorrect) {
+    fb.className = 'ok';
+    fb.textContent = '✓ ¡Correcto!';
+  } else {
+    fb.className = 'fail';
+    const correctLabels = q.correct.map(i => String.fromCharCode(65 + i)).join(', ');
+    fb.textContent = `✗ Incorrecto. La${q.correct.length > 1 ? 's' : ''} respuesta${q.correct.length > 1 ? 's' : ''} correcta${q.correct.length > 1 ? 's' : ''}: ${correctLabels}`;
+  }
+
+  document.getElementById('btn-check').style.display = 'none';
+  document.getElementById('btn-next').style.display = 'inline-block';
+  document.getElementById('q-score-live').textContent = `Puntaje: ${score}`;
+}
+
+function nextQuestion() {
+  current++;
+  if (current >= questions.length) {
+    showResults();
+  } else {
+    renderQuestion();
+  }
+}
+
+function showResults() {
+  document.getElementById('quiz-screen').style.display = 'none';
+  document.getElementById('results-screen').style.display = 'block';
+
+  const pct = Math.round((score / questions.length) * 100);
+  document.getElementById('score-number').textContent = score;
+  document.getElementById('score-total').textContent = `de ${questions.length}`;
+
+  let label, color;
+  if (pct >= 80) {
+    label = '¡Excelente! 🎉';
+    color = '#28a745';
+  } else if (pct >= 60) {
+    label = 'Bien, seguí repasando 💪';
+    color = '#e07000';
+  } else {
+    label = 'A repasar más 📞';
+    color = '#dc3545';
+  }
+
+  document.getElementById('score-circle').style.borderColor = color;
+  document.getElementById('score-number').style.color = color;
+  document.getElementById('score-label').textContent = label;
+  document.getElementById('score-pct').textContent = `${pct}% de respuestas correctas`;
+  document.getElementById('progress-bar').style.width = '100%';
+}
+</script>
