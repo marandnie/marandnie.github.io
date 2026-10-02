@@ -13,8 +13,14 @@ title: Trabajos
 permalink: /work/
 ---
 
-[Convertidor numerico Hexa / Binario / Decimal](https://mandieto.com.ar/hex_calculator)
+[Convertidor numérico Hexa / Binario / Decimal](https://mandieto.com.ar/hex-calculator/)
 
 [Vitamin D Calculator](https://mandieto.com.ar/vitamin-d-iu-calculator/)
 
 [B12](https://mandieto.com.ar/)
+
+[SPD — Primer Parcial](https://mandieto.com.ar/spd/): quiz para practicar el primer parcial de SPD.
+
+[Cine Hoy](https://cine.mandieto.com.ar/): cartelera del día para anotar qué películas ver.
+
+[Tramoya](https://tramoya.mandieto.com.ar/): turnos de arme y desarme de escenografía para grupos de teatro.
