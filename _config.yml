@@ -23,7 +23,10 @@ email: mandieto@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Este sitio fue diseñado para poder mostrar un poco de lo que sé hacer. Me interesa que la gente pueda aprender a partir de los ejemplos, si tenés alguna pregunta no dudes en contactarme. Please be kind. Rewind.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://mandieto.com.ar" # the base hostname & protocol for your site
+tagline: "Blog y portfolio"
+lang: es-AR
+locale: es_AR
 twitter_username: marinieto
 github_username:  marandnie
 
@@ -31,6 +34,15 @@ github_username:  marandnie
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Imagen por defecto para compartir en redes (cada post puede usar su propia `image:`)
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /Marina.jpg
   
 header_pages:
   - about.md
