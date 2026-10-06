@@ -1,0 +1,21 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- comment -%}
+    jekyll-seo-tag genera <title>, description, canonical, Open Graph y Twitter.
+    Su JSON-LD genérico se descarta (no sabe quién es la autora) y lo reemplaza
+    _includes/schema.html: un único @graph con WebSite + Person + la página.
+  {%- endcomment -%}
+  {%- capture seo_tags -%}{% seo %}{%- endcapture -%}
+  {{ seo_tags | split: '<script type="application/ld+json">' | first }}
+  {%- include schema.html %}
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="48x48">
+  <link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  {%- feed_meta -%}
+  {%- if jekyll.environment == 'production' and site.google_analytics -%}
+    {%- include google-analytics.html -%}
+  {%- endif %}
+</head>

@@ -1,69 +1,71 @@
-# Welcome to Jekyll!
+# Configuración del sitio. Si la cambiás con `bundle exec jekyll serve` corriendo,
+# hay que reiniciar el servidor (este archivo no se recarga solo).
 #
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you: 
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+# Plan SEO: specs/001-seo/ (spec, plan y tareas).
 
+# --- Identidad del sitio ---
 title: El sitio web de Marina
-email: mandieto@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Este sitio fue diseñado para poder mostrar un poco de lo que sé hacer. Me interesa que la gente pueda aprender a partir de los ejemplos, si tenés alguna pregunta no dudes en contactarme. Please be kind. Rewind.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://mandieto.com.ar" # the base hostname & protocol for your site
 tagline: "Blog y portfolio"
+author: Marina Nieto
+email: mandieto@gmail.com
+description: >-
+  Blog y portfolio de Marina Nieto, FinOps Analyst en Buenos Aires: costos de nube,
+  AWS, datos y los proyectos que voy desarrollando.
+url: "https://mandieto.com.ar" # dominio y protocolo
+baseurl: ""                     # subcarpeta del sitio (vacío = raíz)
 lang: es-AR
 locale: es_AR
-twitter_username: marinieto
-github_username:  marandnie
+timezone: America/Argentina/Buenos_Aires
 
-# Build settings
+# Redes (las muestra el pie de página de minima).
+# Los perfiles para Google (sameAs) están en _data/person.yml
+github_username: marandnie
+linkedin_username: marandnie
+twitter_username: marinieto
+
+# --- Build ---
 theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-redirect-from
 
-# Imagen por defecto para compartir en redes (cada post puede usar su propia `image:`)
+# URLs de posts limpias y descriptivas: /blog/<nombre-del-archivo-sin-fecha>/
+permalink: /blog/:title/
+
+minima:
+  date_format: "%d/%m/%Y"
+
 defaults:
+  # Imagen por defecto al compartir en redes (cada página puede definir su propia `image:`)
   - scope:
       path: ""
     values:
-      image: /Marina.jpg
-  
+      image:
+        path: /assets/img/marina-nieto-og.jpg
+        width: 1200
+        height: 675
+  # Los posts los firma Marina
+  - scope:
+      path: ""
+      type: posts
+    values:
+      author: Marina Nieto
+
 header_pages:
   - about.md
   - trabajos.md
- 
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+
+# Archivos que no se publican. En Jekyll 3 (el de GitHub Pages) esta lista
+# reemplaza a la de por defecto, por eso se repite completa.
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - README.md
+  - specs/

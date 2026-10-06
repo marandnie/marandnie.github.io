@@ -1,0 +1,43 @@
+# Datos de identidad de Marina. Los usan los datos estructurados (JSON-LD)
+# que lee Google y la página About. Para actualizar algo, cambialo acá.
+
+name: Marina Nieto
+job_title: FinOps Analyst
+image: /assets/img/marina-nieto.jpg
+location: Buenos Aires, Argentina
+description: >-
+  FinOps Analyst en Gire S.A. Optimización de costos de nube en AWS,
+  Savings Plans y Reserved Instances, reporting de costos y análisis de datos.
+
+works_for:
+  name: Gire S.A.
+
+alumni_of:
+  name: Universidad Nacional de San Martín (UNSAM)
+  url: https://www.unsam.edu.ar
+
+credentials:
+  # TODO(P2): reemplazar por el nombre exacto (p. ej. "FinOps Certified Practitioner")
+  - name: Certificación de la FinOps Foundation
+    category: certification
+    recognized_by: FinOps Foundation
+    recognized_by_url: https://www.finops.org
+
+knows_about:
+  - FinOps
+  - Optimización de costos de nube
+  - AWS
+  - Savings Plans
+  - Reserved Instances
+  - AWS Cost and Usage Report (CUR)
+  - Amazon Athena
+  - Tableau
+  - Análisis de datos
+  - Multi-cloud
+
+# Perfiles en otros sitios (sameAs). Es lo que le confirma a Google
+# que todas estas cuentas son de la misma persona.
+same_as:
+  - https://www.linkedin.com/in/marandnie/
+  - https://github.com/marandnie
+  - https://x.com/marinieto
