@@ -119,4 +119,4 @@ Verificables con `specs/001-seo/seo_check.py` (contra el build local o contra el
 ## 9. Preguntas abiertas
 
 - **P1.** El link "B12" de Trabajos apunta a la home y no hay ninguna página B12 publicada. ¿Qué proyecto es? Hasta definirlo, queda como está.
-- **P2.** Nombre exacto de la certificación de la FinOps Foundation (p. ej. *FinOps Certified Practitioner*). Hoy figura de forma genérica en `_data/person.yml`.
+- ~~**P2.** Nombre exacto de la certificación.~~ Resuelta (2026-10-06): *FinOps Certified Practitioner*.

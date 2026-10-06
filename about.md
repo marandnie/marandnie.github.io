@@ -26,7 +26,7 @@ Mi nombre es Marina Nieto y trabajo en **FinOps**: ayudo a que las empresas enti
 
 ## Formación
 
-- Certificación de la [FinOps Foundation](https://www.finops.org/).
+- **FinOps Certified Practitioner**, de la [FinOps Foundation](https://www.finops.org/).
 - Estudiante de la [Tecnicatura Universitaria en Programación Informática](https://www.unsam.edu.ar/escuelas/ciencia/107/ciencia/programacion-informatica) de la [UNSAM](https://www.unsam.edu.ar).
 
 ## Este sitio

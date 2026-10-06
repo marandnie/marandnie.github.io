@@ -48,12 +48,12 @@
 
 - [ ] T18 Publicar la rama `seo/001-plan-seo` en GitHub y mergearla a `main`.
 - [ ] T19 Correr `python3 specs/001-seo/seo_check.py https://mandieto.com.ar` después del deploy. (CA1–CA9 en producción)
-- [ ] T20 Search Console: agregar propiedad de **dominio** `mandieto.com.ar` y verificarla con el registro TXT en Cloudflare. (R16)
+- [x] T20 Search Console: propiedad `mandieto.com.ar` creada y verificada (ya existía). (R16)
 - [ ] T21 Search Console → Sitemaps → enviar `https://mandieto.com.ar/sitemap.xml`. (R16)
 - [ ] T22 Inspección de URLs → solicitar indexación de `/` y `/about/`. (R16)
 - [ ] T23 Rich Results Test de `https://mandieto.com.ar/about/` y de un post. (CA11)
 - [ ] T24 Poner `https://mandieto.com.ar` en LinkedIn (Información de contacto → Sitio web), GitHub (Website del perfil) y X (bio). (R17)
-- [ ] T25 Resolver preguntas abiertas P1 (link "B12") y P2 (nombre exacto de la certificación).
+- [ ] T25 Resolver la pregunta abierta P1 (link "B12"). P2 resuelta: FinOps Certified Practitioner.
 
 ## Fase 8 — Contenido (recomendado, continuo)
 
@@ -66,6 +66,15 @@ La guía de Google pone el contenido original y útil por encima de todo lo téc
 - [ ] T30 Post: FinOps multi-cloud: lo que aprendí comparando AWS, GCP, Azure, Huawei e IBM Cloud.
 
 Con 1 post por mes alcanza; lo importante es que sea propio y concreto.
+
+## Fase 8b — Privacidad de la foto (Marina)
+
+Llegan visitas desde IDCrawl (buscador de personas que junta fotos y perfiles públicos).
+
+- [ ] T33 Reemplazar la foto por una ilustración propia **con los mismos nombres de archivo**: `assets/img/marina-nieto.jpg` (960×540, About + schema) y `assets/img/marina-nieto-og.jpg` (1200×675, redes). Actualizar el `alt` en `about.md`.
+- [ ] T34 Borrar las fotos viejas que siguen publicadas: `Marina.jpg` y `pelo.jpg` en la raíz del repo.
+- [ ] T35 Después del deploy, en Search Console → Eliminaciones → Nueva solicitud → Eliminación temporal, cargar las URLs viejas de las fotos (`/Marina.jpg`, `/pelo.jpg`). Como van a dar 404, Google las saca del todo al volver a rastrearlas.
+- [ ] T36 Pedir la baja del perfil en `idcrawl.com/remove-my-information`.
 
 ## Fase 9 — Medición
 

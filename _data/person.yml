@@ -17,8 +17,7 @@ alumni_of:
   url: https://www.unsam.edu.ar
 
 credentials:
-  # TODO(P2): reemplazar por el nombre exacto (p. ej. "FinOps Certified Practitioner")
-  - name: Certificación de la FinOps Foundation
+  - name: FinOps Certified Practitioner
     category: certification
     recognized_by: FinOps Foundation
     recognized_by_url: https://www.finops.org
