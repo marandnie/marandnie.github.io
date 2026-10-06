@@ -3,6 +3,9 @@ layout: post
 title:  "La humanidad del genoma"
 date:   2020-02-04 22:00:00 -0300
 categories: Biología
+description: "Fragmento de «La humanidad del genoma», de Alberto Kornblihtt, sobre por qué la genética muestra que las razas humanas no existen."
+redirect_from:
+  - /biología/2020/02/05/Lasrazasnoexisten.html
 ---
 
 

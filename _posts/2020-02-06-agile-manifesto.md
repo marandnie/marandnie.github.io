@@ -3,6 +3,11 @@ layout: post
 title:  "Manifesto for Agile Software Development"
 date:   2020-02-06 10:00:00 -0300
 categories: SoftwareDev
+lang: en
+locale: en_US
+description: "The Manifesto for Agile Software Development and its twelve principles, shared from agilemanifesto.org."
+redirect_from:
+  - /softwaredev/2020/02/06/Agile.html
 ---
 
 # Agile Manifesto

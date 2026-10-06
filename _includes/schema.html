@@ -1,0 +1,91 @@
+{%- comment -%}
+  Datos estructurados (JSON-LD) para Google. Un único @graph por página:
+    - WebSite + Person (Marina) en todas las páginas, con @id estables.
+    - /about/  -> ProfilePage cuya entidad principal es Marina.
+    - posts    -> BlogPosting firmado por Marina.
+    - resto    -> WebPage.
+  Los datos de Marina salen de _data/person.yml.
+{%- endcomment -%}
+{%- assign person = site.data.person -%}
+{%- assign home_url = '/' | absolute_url -%}
+{%- assign website_id = home_url | append: '#website' -%}
+{%- assign person_id = home_url | append: '#person' -%}
+{%- assign about_url = '/about/' | absolute_url -%}
+{%- assign page_url = page.url | absolute_url -%}
+{%- assign page_lang = page.lang | default: site.lang -%}
+{%- assign page_description = page.description | default: site.description | strip_newlines | strip -%}
+{%- assign page_image = page.image.path | default: page.image | default: person.image -%}
+{%- if page.url == '/about/' -%}
+  {%- assign page_type = 'ProfilePage' -%}
+{%- elsif page.collection == 'posts' -%}
+  {%- assign page_type = 'BlogPosting' -%}
+{%- else -%}
+  {%- assign page_type = 'WebPage' -%}
+{%- endif -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": {{ website_id | jsonify }},
+      "url": {{ home_url | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "description": {{ site.description | strip_newlines | strip | jsonify }},
+      "inLanguage": {{ site.lang | jsonify }},
+      "publisher": { "@id": {{ person_id | jsonify }} }
+    },
+    {
+      "@type": "Person",
+      "@id": {{ person_id | jsonify }},
+      "name": {{ person.name | jsonify }},
+      "url": {{ about_url | jsonify }},
+      "image": {{ person.image | absolute_url | jsonify }},
+      "jobTitle": {{ person.job_title | jsonify }},
+      "description": {{ person.description | strip_newlines | strip | jsonify }},
+      "worksFor": { "@type": "Organization", "name": {{ person.works_for.name | jsonify }} },
+      "homeLocation": { "@type": "Place", "name": {{ person.location | jsonify }} },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": {{ person.alumni_of.name | jsonify }},
+        "url": {{ person.alumni_of.url | jsonify }}
+      },
+      "hasCredential": [
+        {%- for c in person.credentials %}
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": {{ c.name | jsonify }},
+          "credentialCategory": {{ c.category | jsonify }},
+          "recognizedBy": { "@type": "Organization", "name": {{ c.recognized_by | jsonify }}, "url": {{ c.recognized_by_url | jsonify }} }
+        }{% unless forloop.last %},{% endunless %}
+        {%- endfor %}
+      ],
+      "knowsAbout": {{ person.knows_about | jsonify }},
+      "sameAs": {{ person.same_as | jsonify }}
+    },
+    {
+      "@type": {{ page_type | jsonify }},
+      {%- if page_type == 'BlogPosting' %}
+      "@id": {{ page_url | append: '#article' | jsonify }},
+      "headline": {{ page.title | jsonify }},
+      "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+      "dateModified": {{ page.last_modified_at | default: page.date | date_to_xmlschema | jsonify }},
+      "author": { "@type": "Person", "@id": {{ person_id | jsonify }}, "name": {{ person.name | jsonify }}, "url": {{ about_url | jsonify }} },
+      "publisher": { "@id": {{ person_id | jsonify }} },
+      "mainEntityOfPage": {{ page_url | jsonify }},
+      {%- else %}
+      "@id": {{ page_url | append: '#webpage' | jsonify }},
+      "name": {{ page.title | default: site.title | jsonify }},
+      {%- endif %}
+      {%- if page_type == 'ProfilePage' %}
+      "mainEntity": { "@type": "Person", "@id": {{ person_id | jsonify }}, "name": {{ person.name | jsonify }} },
+      {%- endif %}
+      "url": {{ page_url | jsonify }},
+      "description": {{ page_description | jsonify }},
+      "image": {{ page_image | absolute_url | jsonify }},
+      "inLanguage": {{ page_lang | jsonify }},
+      "isPartOf": { "@id": {{ website_id | jsonify }} }
+    }
+  ]
+}
+</script>
