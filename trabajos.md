@@ -14,7 +14,7 @@ permalink: /work/
 description: "Proyectos de Marina Nieto: Cine Hoy, Tramoya, un quiz para el primer parcial de SPD y calculadoras web (hexadecimal/binario/decimal, vitamina D y B12)."
 ---
 
-[Convertidor numérico Hexa / Binario / Decimal](https://mandieto.com.ar/hex-calculator/)
+[Convertidor hexadecimal, binario y decimal](https://mandieto.com.ar/hexadecimal/): conversión al instante, tabla de equivalencias y tablas de suma y multiplicación hexadecimal.
 
 [Calculadora de vitamina D](https://mandieto.com.ar/vitamina-d/): equivalencias entre UI, µg y mg, con la dosis diaria recomendada.
 

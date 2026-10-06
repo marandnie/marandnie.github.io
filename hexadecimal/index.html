@@ -1,0 +1,163 @@
+---
+layout: page
+title: Convertidor hexadecimal, binario y decimal
+permalink: /hexadecimal/
+description: "Convertidor entre hexadecimal, binario y decimal, con tabla de equivalencias y tablas de suma y multiplicación hexadecimal para estudiar."
+redirect_from:
+  - /hex-calculator/
+---
+
+<style>
+  #hex { max-width: 720px; }
+  #hex .card { padding: 16px 20px; margin: 0 0 20px; border: 1px solid #ddd; border-radius: 8px; background: #fafafa; }
+  #hex label { display: block; font-weight: bold; margin: 0 0 6px; }
+  #hex .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  #hex input, #hex select { padding: 8px 10px; border: 1px solid #ccc; border-radius: 4px; font: inherit; }
+  #hex input { flex: 1 1 200px; min-width: 0; font-family: Menlo, Consolas, monospace; }
+  #hex input.err { border-color: #d93025; }
+  #hex .msg { color: #d93025; font-size: 0.9em; margin-top: 6px; min-height: 1.2em; }
+  #hex .out { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  #hex .out td { padding: 8px; border-bottom: 1px solid #e5e5e5; vertical-align: middle; }
+  #hex .out td:first-child { width: 90px; color: #555; }
+  #hex .out code { font-size: 1.05em; word-break: break-all; background: none; border: 0; padding: 0; }
+  #hex .out button { padding: 4px 10px; border: 1px solid #ccc; border-radius: 4px; background: #fff; cursor: pointer; font: inherit; font-size: 0.85em; }
+  #hex .out button:hover { background: #eee; }
+  #hex .scroll { overflow-x: auto; }
+  #hex table.grid { border-collapse: collapse; margin: 8px 0; font-family: Menlo, Consolas, monospace; font-size: 0.9em; }
+  #hex table.grid th, #hex table.grid td { border: 1px solid #ddd; padding: 4px 6px; text-align: center; min-width: 26px; }
+  #hex table.grid th { background: #e8eef0; }
+  #hex table.grid td.hl { background: #f3f6f7; }
+  #hex table.grid th.hl { background: #c9dade; }
+  #hex table.grid td.on { background: #2a7ae2; color: #fff; font-weight: bold; }
+  #hex small { color: #666; }
+</style>
+
+<div id="hex">
+
+<div class="card">
+  <label for="numero">Número</label>
+  <div class="row">
+    <input type="text" id="numero" placeholder="Ej.: 1F4" autocomplete="off" spellcheck="false" autocapitalize="characters">
+    <select id="base" aria-label="Está escrito en">
+      <option value="16">en hexadecimal</option>
+      <option value="2">en binario</option>
+      <option value="10">en decimal</option>
+    </select>
+  </div>
+  <div id="msg" class="msg" aria-live="polite"></div>
+  <table class="out">
+    <tr><td>Hexadecimal</td><td><code id="o16">-</code></td><td><button type="button" data-copy="o16">Copiar</button></td></tr>
+    <tr><td>Binario</td><td><code id="o2">-</code></td><td><button type="button" data-copy="o2">Copiar</button></td></tr>
+    <tr><td>Decimal</td><td><code id="o10">-</code></td><td><button type="button" data-copy="o10">Copiar</button></td></tr>
+  </table>
+  <small>Convierte mientras escribís. Acepta prefijos como 0x y 0b, espacios y números de cualquier largo. El binario se muestra en grupos de 4 bits: cada grupo es un dígito hexadecimal.</small>
+</div>
+
+<div class="card">
+  <h3>Equivalencias de 0 a 16</h3>
+  <div class="scroll"><table class="grid" id="t-equiv"></table></div>
+</div>
+
+<div class="card">
+  <h3>Tabla de suma hexadecimal</h3>
+  <small>Pasá el mouse o tocá una celda para ver qué fila y columna se suman.</small>
+  <div class="scroll"><table class="grid" id="t-suma"></table></div>
+</div>
+
+<div class="card">
+  <h3>Tabla de multiplicación hexadecimal</h3>
+  <div class="scroll"><table class="grid" id="t-mult"></table></div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var H = function (n) { return n.toString(16).toUpperCase(); };
+  var VALID = { 16: /^[0-9A-F]+$/, 2: /^[01]+$/, 10: /^[0-9]+$/ };
+  var NAME = { 16: 'hexadecimal (0-9 y A-F)', 2: 'binario (solo 0 y 1)', 10: 'decimal (0-9)' };
+  var PREFIX = { 16: '0x', 2: '0b', 10: '' };
+
+  function parse(text, base) {
+    var s = text.trim().toUpperCase().replace(/[\s_]/g, '');
+    if (base === 16) s = s.replace(/^0X/, '');
+    if (base === 2) s = s.replace(/^0B/, '');
+    if (s === '') return null;
+    if (!VALID[base].test(s)) return undefined;
+    return BigInt(PREFIX[base] + s || '0');
+  }
+
+  function groupBits(bin) {
+    var pad = (4 - bin.length % 4) % 4;
+    return ('0'.repeat(pad) + bin).match(/.{4}/g).join(' ');
+  }
+
+  function convertir() {
+    var base = parseInt($('base').value, 10);
+    var n = parse($('numero').value, base);
+    $('numero').classList.toggle('err', n === undefined);
+    $('msg').textContent = n === undefined ? 'Ese número no es ' + NAME[base] + '.' : '';
+    var ok = typeof n === 'bigint';
+    $('o16').textContent = ok ? n.toString(16).toUpperCase() : '-';
+    $('o2').textContent = ok ? groupBits(n.toString(2)) : '-';
+    $('o10').textContent = ok ? n.toLocaleString('es-AR') : '-';
+  }
+
+  ['input', 'change'].forEach(function (ev) {
+    $('numero').addEventListener(ev, convertir);
+    $('base').addEventListener(ev, convertir);
+  });
+
+  document.querySelectorAll('#hex [data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = $(b.dataset.copy).textContent.replace(/[ .]/g, '');
+      if (t === '-' || !navigator.clipboard) return;
+      navigator.clipboard.writeText(t).then(function () {
+        b.textContent = 'Copiado';
+        setTimeout(function () { b.textContent = 'Copiar'; }, 1200);
+      });
+    });
+  });
+
+  // Tabla de equivalencias
+  var eq = '<tr><th>Hex</th><th>Binario</th><th>Decimal</th></tr>';
+  for (var i = 0; i <= 16; i++) {
+    eq += '<tr><td>' + H(i) + '</td><td>' + i.toString(2).padStart(4, '0') + '</td><td>' + i + '</td></tr>';
+  }
+  $('t-equiv').innerHTML = eq;
+
+  // Tablas de suma y multiplicación, generadas con resaltado de fila y columna
+  function grilla(id, simbolo, op) {
+    var html = '<tr><th>' + simbolo + '</th>';
+    for (var c = 0; c < 16; c++) html += '<th data-c="' + c + '">' + H(c) + '</th>';
+    html += '</tr>';
+    for (var r = 0; r < 16; r++) {
+      html += '<tr><th data-r="' + r + '">' + H(r) + '</th>';
+      for (var c2 = 0; c2 < 16; c2++) {
+        html += '<td data-r="' + r + '" data-c="' + c2 + '" title="' + H(r) + ' ' + simbolo + ' ' + H(c2) + ' = ' + H(op(r, c2)) + '">' + H(op(r, c2)) + '</td>';
+      }
+      html += '</tr>';
+    }
+    var t = $(id);
+    t.innerHTML = html;
+
+    function limpiar() {
+      t.querySelectorAll('.hl, .on').forEach(function (x) { x.classList.remove('hl', 'on'); });
+    }
+    function marcar(e) {
+      var td = e.target.closest('td');
+      if (!td) return;
+      limpiar();
+      var r = td.dataset.r, c = td.dataset.c;
+      t.querySelectorAll('[data-r="' + r + '"], [data-c="' + c + '"]').forEach(function (x) { x.classList.add('hl'); });
+      td.classList.add('on');
+    }
+    t.addEventListener('mouseover', marcar);
+    t.addEventListener('click', marcar);
+    t.addEventListener('mouseleave', limpiar);
+  }
+  grilla('t-suma', '+', function (a, b) { return a + b; });
+  grilla('t-mult', '×', function (a, b) { return a * b; });
+})();
+</script>
