@@ -1,0 +1,155 @@
+---
+layout: page
+title: Calculadora de vitamina B12 para veganos
+permalink: /b12/
+description: "Calculadora de vitamina B12: convertí entre µg, mcg y mg, mirá el % del valor diario y si tu dosis llega a lo recomendado para veganos."
+---
+
+<style>
+  #b12 { max-width: 640px; }
+  #b12 .card { padding: 16px 20px; margin: 0 0 20px; border: 1px solid #ddd; border-radius: 8px; background: #fafafa; }
+  #b12 label { display: block; font-weight: bold; margin: 12px 0 6px; }
+  #b12 .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  #b12 input, #b12 select { padding: 8px 10px; border: 1px solid #ccc; border-radius: 4px; font: inherit; }
+  #b12 input[type="number"] { flex: 1 1 140px; min-width: 0; }
+  #b12 #veces { width: 80px; flex: none; }
+  #b12 .res { margin-top: 16px; }
+  #b12 .res table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+  #b12 .res td { padding: 6px 8px; border-bottom: 1px solid #e5e5e5; }
+  #b12 .res td:last-child { text-align: right; font-weight: bold; }
+  #b12 .ok, #b12 .low { padding: 10px 12px; border-radius: 6px; margin-top: 10px; }
+  #b12 .ok { background: #e6f4ea; border: 1px solid #a8d5b5; }
+  #b12 .low { background: #fdecea; border: 1px solid #f2b8b5; }
+  #b12 .hidden { display: none; }
+  #b12 small { color: #666; }
+</style>
+
+<div id="b12">
+
+<div class="card">
+  <label for="dosis">Dosis por toma</label>
+  <div class="row">
+    <input type="number" id="dosis" min="0" step="any" placeholder="Ej.: 1000" inputmode="decimal">
+    <select id="unidad" aria-label="Unidad">
+      <option value="ug">µg (mcg)</option>
+      <option value="mg">mg</option>
+    </select>
+  </div>
+
+  <label for="frecuencia">¿Cada cuánto la tomás?</label>
+  <div class="row">
+    <select id="frecuencia">
+      <option value="7">Todos los días (suplemento)</option>
+      <option value="fort">Todos los días, en alimentos fortificados</option>
+      <option value="2">2 veces por semana</option>
+      <option value="1">1 vez por semana</option>
+      <option value="otra">Otra cantidad de veces por semana</option>
+    </select>
+    <input type="number" id="veces" class="hidden" min="1" max="21" step="1" value="3" aria-label="Veces por semana">
+  </div>
+
+  <div id="resultado" class="res" aria-live="polite"></div>
+</div>
+
+<div class="card">
+<h3>Equivalencias</h3>
+<ul>
+  <li><strong>1 µg = 1 mcg.</strong> Son la misma unidad (microgramo), escrita de dos formas.</li>
+  <li><strong>1 mg = 1000 µg.</strong> Un suplemento de "1 mg" de B12 tiene 1000 µg.</li>
+  <li>La B12 <strong>no se mide en UI</strong> (unidades internacionales), a diferencia de la vitamina D.</li>
+  <li>El <strong>valor diario (VD)</strong> de B12 para adultos es <strong>2,4 µg</strong>. Por eso las etiquetas suelen mostrar porcentajes enormes, como 41.667 % para 1000 µg.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Cuánto se recomienda para veganos</h3>
+<p>Ningún alimento vegetal es una fuente confiable de B12, así que hace falta suplementar o comer alimentos fortificados. La Vegan Society recomienda elegir una de estas opciones:</p>
+<ul>
+  <li><strong>Alimentos fortificados</strong> dos o tres veces por día, sumando al menos <strong>3 µg por día</strong>.</li>
+  <li>Un suplemento <strong>diario</strong> de al menos <strong>10 µg</strong>.</li>
+  <li>Un suplemento <strong>semanal</strong> de al menos <strong>2000 µg</strong>.</li>
+</ul>
+<p>Vegan Health (Jack Norris, nutricionista) propone dosis algo más altas: <strong>50 µg por día</strong> o <strong>1000 µg dos veces por semana</strong>.</p>
+
+<h4>¿Por qué la dosis semanal es tanto más alta?</h4>
+<p>El cuerpo absorbe muy bien las dosis chicas (alrededor de la mitad de 1 o 2 µg), pero cuando la dosis es grande absorbe un porcentaje mínimo: cerca del 2 % de 500 µg y del 1,3 % de 1000 µg. Por eso no alcanza con sumar: 7 tomas de 10 µg no equivalen a una toma de 70 µg. Cuanto menos frecuente es la toma, más alta tiene que ser cada dosis.</p>
+
+<h4>Otras cosas a tener en cuenta</h4>
+<ul>
+  <li>La B12 no tiene un límite máximo de ingesta establecido: se considera segura incluso en dosis altas.</li>
+  <li>Vegan Health recomienda la forma <strong>cianocobalamina</strong>, que es la más estable y la más estudiada.</li>
+  <li>Las personas de más de 65 años absorben peor la B12 y conviene que usen las dosis más altas del rango.</li>
+  <li>En embarazo, lactancia, infancia o si tenés síntomas o un análisis con B12 baja, consultá con un profesional de la salud.</li>
+</ul>
+<p><small>Esta calculadora es informativa y no reemplaza la consulta médica.</small></p>
+</div>
+
+<div class="card">
+<h3>Fuentes</h3>
+<ul>
+  <li><a href="https://www.vegansociety.com/resources/nutrition-and-health/nutrients/vitamin-b12/what-every-vegan-should-know-about-vitamin-b12">The Vegan Society: What every vegan should know about vitamin B12</a></li>
+  <li><a href="https://veganhealth.org/vitamin-b12/">Vegan Health: Vitamin B12</a></li>
+  <li><a href="https://ods.od.nih.gov/factsheets/VitaminB12-HealthProfessional/">NIH, Office of Dietary Supplements: Vitamin B12</a></li>
+</ul>
+<p>Otra calculadora: <a href="{{ '/vitamin-d-iu-calculator/' | relative_url }}">vitamina D (UI, mcg y mg)</a>.</p>
+</div>
+
+</div>
+
+<script>
+(function () {
+  var VD = 2.4; // valor diario adultos, en µg
+  var $ = function (id) { return document.getElementById(id); };
+  var nf = function (n, d) {
+    return n.toLocaleString('es-AR', { maximumFractionDigits: d === undefined ? 2 : d });
+  };
+
+  function evaluar(ug, freq, veces) {
+    // Devuelve [cumple, texto] según la frecuencia de toma.
+    if (freq === 'fort') {
+      return ug >= 3
+        ? [true, 'Llegás a los 3 µg diarios que recomienda la Vegan Society para alimentos fortificados. Recordá repartirlos en 2 o 3 comidas.']
+        : [false, 'Para alimentos fortificados se recomienda sumar al menos 3 µg por día, repartidos en 2 o 3 comidas. Te faltan ' + nf(3 - ug) + ' µg.'];
+    }
+    if (veces >= 7) {
+      if (ug >= 50) return [true, 'Cumplís las dos recomendaciones diarias: 10 µg (Vegan Society) y 50 µg (Vegan Health).'];
+      if (ug >= 10) return [true, 'Cumplís los 10 µg diarios de la Vegan Society. Vegan Health propone 50 µg por día.'];
+      return [false, 'Para un suplemento diario se recomiendan al menos 10 µg (Vegan Society) o 50 µg (Vegan Health). Te faltan ' + nf(10 - ug) + ' µg para el mínimo.'];
+    }
+    if (veces >= 2) {
+      return ug >= 1000
+        ? [true, 'Con ' + veces + ' tomas por semana de al menos 1000 µg cumplís la pauta de Vegan Health (1000 µg dos veces por semana).']
+        : [false, 'Si la tomás ' + veces + ' veces por semana, se recomienda que cada toma sea de al menos 1000 µg (Vegan Health). Con dosis más chicas conviene tomarla todos los días.'];
+    }
+    return ug >= 2000
+      ? [true, 'Cumplís la recomendación semanal de la Vegan Society: una toma de al menos 2000 µg.']
+      : [false, 'Para una sola toma por semana se recomiendan al menos 2000 µg (Vegan Society). Te faltan ' + nf(2000 - ug) + ' µg, o podés pasar a una toma diaria.'];
+  }
+
+  function calcular() {
+    var dosis = parseFloat(String($('dosis').value).replace(',', '.'));
+    var freq = $('frecuencia').value;
+    $('veces').classList.toggle('hidden', freq !== 'otra');
+    var out = $('resultado');
+    if (!(dosis > 0)) { out.innerHTML = ''; return; }
+
+    var ug = $('unidad').value === 'mg' ? dosis * 1000 : dosis;
+    var veces = freq === 'fort' ? 7 : freq === 'otra' ? Math.max(1, parseInt($('veces').value, 10) || 1) : parseInt(freq, 10);
+    var r = evaluar(ug, freq, veces);
+
+    out.innerHTML =
+      '<table>' +
+      '<tr><td>Microgramos (µg = mcg)</td><td>' + nf(ug) + ' µg</td></tr>' +
+      '<tr><td>Miligramos</td><td>' + nf(ug / 1000, 4) + ' mg</td></tr>' +
+      '<tr><td>% del valor diario (2,4 µg)</td><td>' + nf(ug / VD * 100, 0) + ' %</td></tr>' +
+      '<tr><td>Total por semana</td><td>' + nf(ug * veces) + ' µg</td></tr>' +
+      '</table>' +
+      '<div class="' + (r[0] ? 'ok' : 'low') + '">' + r[1] + '</div>';
+  }
+
+  ['dosis', 'unidad', 'frecuencia', 'veces'].forEach(function (id) {
+    $(id).addEventListener('input', calcular);
+    $(id).addEventListener('change', calcular);
+  });
+})();
+</script>

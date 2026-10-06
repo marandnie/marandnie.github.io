@@ -53,7 +53,7 @@
 - [ ] T22 Inspección de URLs → solicitar indexación de `/` y `/about/`. (R16)
 - [ ] T23 Rich Results Test de `https://mandieto.com.ar/about/` y de un post. (CA11)
 - [ ] T24 Poner `https://mandieto.com.ar` en LinkedIn (Información de contacto → Sitio web), GitHub (Website del perfil) y X (bio). (R17)
-- [ ] T25 Resolver la pregunta abierta P1 (link "B12"). P2 resuelta: FinOps Certified Practitioner.
+- [x] T25 Resolver la pregunta abierta P1 (link "B12"): era una calculadora de B12 para veganos, ahora publicada en `/b12/`. P2 resuelta: FinOps Certified Practitioner.
 
 ## Fase 8 — Contenido (recomendado, continuo)
 

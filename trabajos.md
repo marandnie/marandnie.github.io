@@ -11,14 +11,14 @@
 layout: page
 title: Trabajos
 permalink: /work/
-description: "Proyectos de Marina Nieto: Cine Hoy, Tramoya, un quiz para el primer parcial de SPD y calculadoras web (hexadecimal/binario/decimal y vitamina D)."
+description: "Proyectos de Marina Nieto: Cine Hoy, Tramoya, un quiz para el primer parcial de SPD y calculadoras web (hexadecimal/binario/decimal, vitamina D y B12)."
 ---
 
 [Convertidor numérico Hexa / Binario / Decimal](https://mandieto.com.ar/hex-calculator/)
 
 [Vitamin D Calculator](https://mandieto.com.ar/vitamin-d-iu-calculator/)
 
-[B12](https://mandieto.com.ar/)
+[Calculadora de vitamina B12](https://mandieto.com.ar/b12/): equivalencias entre µg, mcg y mg, % del valor diario y dosis recomendada para veganos.
 
 [SPD - Primer Parcial](https://mandieto.com.ar/spd/primer-parcial/): quiz para practicar el primer parcial de SPD.
 
