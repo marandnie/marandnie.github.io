@@ -18,6 +18,14 @@ alumni_of:
   url: https://www.unsam.edu.ar
 
 credentials:
+  - name: Google Cloud Professional Cloud Architect
+    category: certification
+    recognized_by: Google Cloud
+    recognized_by_url: https://cloud.google.com
+  - name: "Microsoft Certified: Azure Data Scientist Associate"
+    category: certification
+    recognized_by: Microsoft
+    recognized_by_url: https://www.microsoft.com
   - name: FinOps Certified Practitioner
     category: certification
     recognized_by: FinOps Foundation

@@ -59,9 +59,9 @@ description: "Claude encontró ART, un sistema de enzimas con repeticiones parec
 
 ## Fuentes
 
-- [Claude discovers a novel enzyme system — Anthropic](https://www.anthropic.com/news/claude-discovers-novel-enzyme-system)
+- [Claude discovers a novel enzyme system - Anthropic](https://www.anthropic.com/news/claude-discovers-novel-enzyme-system)
 - Preprint: <!-- link -->
 - [Nature](https://www.nature.com/articles/d41586-026-03039-6)
 - The Next Web: <!-- link -->
-- [Francisco Mojica — Wikipedia](https://en.wikipedia.org/wiki/Francisco_Mojica)
-- [Historia de CRISPR — PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9174617/)
+- [Francisco Mojica - Wikipedia](https://en.wikipedia.org/wiki/Francisco_Mojica)
+- [Historia de CRISPR - PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9174617/)

@@ -21,14 +21,16 @@ Mi nombre es Marina Nieto y trabajo en **FinOps**: ayudo a que las empresas enti
 
 ## Trayectoria
 
-- **Gire S.A.** - AI & Cloud FinOps Analyst (marzo 2025 – hoy).
-- **TIVIT LATAM** - FinOps Sr Analyst (julio 2024 – marzo 2025). FinOps multi-cloud: AWS, GCP, Azure, Huawei Cloud e IBM Cloud.
-- **Mercado Libre** - Data & Analytics Developer en el equipo de Cloud Economics (septiembre 2022 – marzo 2024).
-- **Accenture** - Business & Integration Architecture Associate, Data Patrol (abril 2021 – septiembre 2022).
+- **Gire S.A.** - AI & Cloud FinOps Analyst (marzo 2025 - hoy).
+- **TIVIT LATAM** - FinOps Sr Analyst (julio 2024 - marzo 2025). FinOps multi-cloud: AWS, GCP, Azure, Huawei Cloud e IBM Cloud.
+- **Mercado Libre** - Data & Analytics Developer en el equipo de Cloud Economics (septiembre 2022 - marzo 2024).
+- **Accenture** - Business & Integration Architecture Associate en el equipo CIO Now! (abril 2021 - septiembre 2022).
 
 ## Formación
 
-- **FinOps Certified Practitioner**, de la [FinOps Foundation](https://www.finops.org/).
+- **Professional Cloud Architect**, de [Google Cloud](https://cloud.google.com/learn/certification/cloud-architect) (marzo 2025).
+- **FinOps Certified Practitioner**, de la [FinOps Foundation](https://www.finops.org/) (agosto 2024).
+- **Microsoft Certified: Azure Data Scientist Associate**, de [Microsoft](https://learn.microsoft.com/credentials/certifications/azure-data-scientist/) (junio 2024).
 - Estudiante de la [Tecnicatura Universitaria en Programación Informática](https://www.unsam.edu.ar/escuelas/ciencia/107/ciencia/programacion-informatica) de la [UNSAM](https://www.unsam.edu.ar).
 
 ## Este sitio

@@ -20,7 +20,7 @@ description: "Proyectos de Marina Nieto: Cine Hoy, Tramoya, un quiz para el prim
 
 [B12](https://mandieto.com.ar/)
 
-[SPD — Primer Parcial](https://mandieto.com.ar/spd/primer-parcial/): quiz para practicar el primer parcial de SPD.
+[SPD - Primer Parcial](https://mandieto.com.ar/spd/primer-parcial/): quiz para practicar el primer parcial de SPD.
 
 [Cine Hoy](https://cine.mandieto.com.ar/): cartelera del día para anotar qué películas ver.
 
