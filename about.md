@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Marina Nieto — AI & Cloud FinOps Analyst
+title: Marina Nieto - AI & Cloud FinOps Analyst
 nav_title: Sobre mí
 permalink: /about/
 description: "Marina Nieto, AI & Cloud FinOps Analyst en Gire S.A. (Buenos Aires): costos de nube en AWS y de IA generativa, Savings Plans y reporting."
@@ -21,10 +21,10 @@ Mi nombre es Marina Nieto y trabajo en **FinOps**: ayudo a que las empresas enti
 
 ## Trayectoria
 
-- **Gire S.A.** — AI & Cloud FinOps Analyst (marzo 2025 – hoy).
-- **TIVIT LATAM** — FinOps Sr Analyst (julio 2024 – marzo 2025). FinOps multi-cloud: AWS, GCP, Azure, Huawei Cloud e IBM Cloud.
-- **Mercado Libre** — Data & Analytics Developer en el equipo de Cloud Economics (septiembre 2022 – marzo 2024).
-- **Accenture** — Business & Integration Architecture Associate, Data Patrol (abril 2021 – septiembre 2022).
+- **Gire S.A.** - AI & Cloud FinOps Analyst (marzo 2025 – hoy).
+- **TIVIT LATAM** - FinOps Sr Analyst (julio 2024 – marzo 2025). FinOps multi-cloud: AWS, GCP, Azure, Huawei Cloud e IBM Cloud.
+- **Mercado Libre** - Data & Analytics Developer en el equipo de Cloud Economics (septiembre 2022 – marzo 2024).
+- **Accenture** - Business & Integration Architecture Associate, Data Patrol (abril 2021 – septiembre 2022).
 
 ## Formación
 
