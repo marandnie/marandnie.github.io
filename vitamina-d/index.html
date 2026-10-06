@@ -1,0 +1,115 @@
+---
+layout: page
+title: Calculadora de vitamina D (UI, µg y mg)
+permalink: /vitamina-d/
+description: "Calculadora de vitamina D: convertí entre unidades internacionales (UI), microgramos (µg o mcg) y miligramos, con la dosis diaria recomendada."
+redirect_from:
+  - /vitamin-d-iu-calculator/
+---
+
+<style>
+  #vitd { max-width: 640px; }
+  #vitd .card { padding: 16px 20px; margin: 0 0 20px; border: 1px solid #ddd; border-radius: 8px; background: #fafafa; }
+  #vitd label { display: block; font-weight: bold; margin: 12px 0 6px; }
+  #vitd .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  #vitd input, #vitd select { padding: 8px 10px; border: 1px solid #ccc; border-radius: 4px; font: inherit; }
+  #vitd input[type="number"] { flex: 1 1 140px; min-width: 0; }
+  #vitd .res { margin-top: 16px; }
+  #vitd .res table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+  #vitd .res td { padding: 6px 8px; border-bottom: 1px solid #e5e5e5; }
+  #vitd .res td:last-child { text-align: right; font-weight: bold; }
+  #vitd .ok, #vitd .low { padding: 10px 12px; border-radius: 6px; margin-top: 10px; }
+  #vitd .ok { background: #e6f4ea; border: 1px solid #a8d5b5; }
+  #vitd .low { background: #fdecea; border: 1px solid #f2b8b5; }
+  #vitd small { color: #666; }
+</style>
+
+<div id="vitd">
+
+<div class="card">
+  <label for="cantidad">Cantidad</label>
+  <div class="row">
+    <input type="number" id="cantidad" min="0" step="any" placeholder="Ej.: 1000" inputmode="decimal">
+    <select id="unidad" aria-label="Unidad">
+      <option value="ui">UI</option>
+      <option value="ug">µg (mcg)</option>
+      <option value="mg">mg</option>
+    </select>
+  </div>
+  <div id="resultado" class="res" aria-live="polite"></div>
+</div>
+
+<div class="card">
+<h3>Equivalencias</h3>
+<ul>
+  <li>La vitamina D muchas veces se expresa en <strong>unidades internacionales (UI)</strong>, en inglés <em>IU</em>.</li>
+  <li><strong>1 µg de vitamina D = 40 UI.</strong></li>
+  <li><strong>1 UI = 0,025 µg.</strong></li>
+  <li><strong>1 mg = 1000 µg</strong> = 40.000 UI.</li>
+  <li><strong>1 mcg = 1 µg.</strong> Son la misma unidad (microgramo), escrita de dos formas.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Qué es la vitamina D</h3>
+<p>La vitamina D es un nutriente que el cuerpo necesita para formar y mantener huesos sanos, porque solo puede absorber el calcio, el componente principal del hueso, cuando hay vitamina D. También regula muchas otras funciones celulares: tiene propiedades antiinflamatorias, antioxidantes y neuroprotectoras que ayudan al sistema inmune, a los músculos y a las células del cerebro.</p>
+<p>Pocos alimentos la tienen de forma natural. Se puede obtener de leches y cereales fortificados y de pescados grasos como el salmón, la caballa y las sardinas. El cuerpo también la produce cuando la luz directa del sol transforma una sustancia de la piel en la forma activa de la vitamina (calciferol).</p>
+<p>Cuánta vitamina D produce la piel depende de muchos factores: la hora del día, la estación, la latitud y la pigmentación de la piel. Según dónde vivas y tu estilo de vida, la producción puede bajar mucho o desaparecer en invierno. El protector solar, que es importante para prevenir el cáncer de piel, también reduce la producción de vitamina D.</p>
+<p>Muchas personas mayores no se exponen al sol con regularidad y absorben peor la vitamina D. Si tu médico sospecha que te falta, un análisis de sangre permite medir el nivel.</p>
+
+<h3>Cuánto se recomienda</h3>
+<ul>
+  <li>Bebés hasta 12 meses: <strong>400 UI</strong> (10 µg) por día.</li>
+  <li>De 1 a 70 años: <strong>600 UI</strong> (15 µg) por día.</li>
+  <li>Más de 70 años: <strong>800 UI</strong> (20 µg) por día.</li>
+</ul>
+<p>No hay que tomar más de <strong>100 µg (4000 UI) por día</strong>, porque puede ser perjudicial. Este máximo vale para adultos (incluidas personas embarazadas, en lactancia y mayores) y para chicos de 11 a 17 años.</p>
+<p><small>Esta calculadora es informativa y no reemplaza la consulta médica.</small></p>
+</div>
+
+<div class="card">
+<h3>Fuentes</h3>
+<ul>
+  <li><a href="https://www.nhs.uk/conditions/vitamins-and-minerals/vitamin-d/">NHS: Vitamin D</a></li>
+  <li><a href="https://www.mayoclinic.org/drugs-supplements-vitamin-d/art-20363792">Mayo Clinic: Vitamin D</a></li>
+</ul>
+<p>Otra calculadora: <a href="{{ '/b12/' | relative_url }}">vitamina B12 para veganos</a>.</p>
+</div>
+
+</div>
+
+<script>
+(function () {
+  var MAX_UG = 100; // máximo diario para adultos, en µg
+  var $ = function (id) { return document.getElementById(id); };
+  var nf = function (n, d) {
+    return n.toLocaleString('es-AR', { maximumFractionDigits: d === undefined ? 3 : d });
+  };
+
+  function calcular() {
+    var cant = parseFloat(String($('cantidad').value).replace(',', '.'));
+    var out = $('resultado');
+    if (!(cant > 0)) { out.innerHTML = ''; return; }
+
+    var u = $('unidad').value;
+    var ug = u === 'ui' ? cant * 0.025 : u === 'mg' ? cant * 1000 : cant;
+    var ui = ug * 40;
+
+    var aviso = ug > MAX_UG
+      ? '<div class="low">Supera el máximo diario de 100 µg (4000 UI) para adultos. Si es una dosis semanal o mensual, consultá con tu médico cómo repartirla.</div>'
+      : '';
+
+    out.innerHTML =
+      '<table>' +
+      '<tr><td>Unidades internacionales</td><td>' + nf(ui, 0) + ' UI</td></tr>' +
+      '<tr><td>Microgramos (µg = mcg)</td><td>' + nf(ug) + ' µg</td></tr>' +
+      '<tr><td>Miligramos</td><td>' + nf(ug / 1000, 4) + ' mg</td></tr>' +
+      '</table>' + aviso;
+  }
+
+  ['cantidad', 'unidad'].forEach(function (id) {
+    $(id).addEventListener('input', calcular);
+    $(id).addEventListener('change', calcular);
+  });
+})();
+</script>

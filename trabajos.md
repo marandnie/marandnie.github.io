@@ -16,7 +16,7 @@ description: "Proyectos de Marina Nieto: Cine Hoy, Tramoya, un quiz para el prim
 
 [Convertidor numérico Hexa / Binario / Decimal](https://mandieto.com.ar/hex-calculator/)
 
-[Vitamin D Calculator](https://mandieto.com.ar/vitamin-d-iu-calculator/)
+[Calculadora de vitamina D](https://mandieto.com.ar/vitamina-d/): equivalencias entre UI, µg y mg, con la dosis diaria recomendada.
 
 [Calculadora de vitamina B12](https://mandieto.com.ar/b12/): equivalencias entre µg, mcg y mg, % del valor diario y dosis recomendada para veganos.
 
