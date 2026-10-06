@@ -9,8 +9,8 @@ tagline: "Blog y portfolio"
 author: Marina Nieto
 email: mandieto@gmail.com
 description: >-
-  Blog y portfolio de Marina Nieto, FinOps Analyst en Buenos Aires: costos de nube,
-  AWS, datos y los proyectos que voy desarrollando.
+  Blog y portfolio de Marina Nieto, AI & Cloud FinOps Analyst en Buenos Aires:
+  costos de nube y de IA, AWS, datos y los proyectos que voy desarrollando. Please be kind. Rewind.
 url: "https://mandieto.com.ar" # dominio y protocolo
 baseurl: ""                     # subcarpeta del sitio (vacío = raíz)
 lang: es-AR

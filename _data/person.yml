@@ -2,12 +2,13 @@
 # que lee Google y la página About. Para actualizar algo, cambialo acá.
 
 name: Marina Nieto
-job_title: FinOps Analyst
+job_title: AI & Cloud FinOps Analyst
 image: /assets/img/marina-nieto.jpg
 location: Buenos Aires, Argentina
 description: >-
-  FinOps Analyst en Gire S.A. Optimización de costos de nube en AWS,
-  Savings Plans y Reserved Instances, reporting de costos y análisis de datos.
+  AI & Cloud FinOps Analyst en Gire S.A. Optimización de costos de nube en AWS,
+  Savings Plans y Reserved Instances, gobierno de costos de IA generativa
+  (Amazon Bedrock, Claude, Cursor, Microsoft 365 Copilot) y reporting de costos.
 
 works_for:
   name: Gire S.A.
@@ -33,6 +34,9 @@ knows_about:
   - Tableau
   - Análisis de datos
   - Multi-cloud
+  - FinOps para IA
+  - Amazon Bedrock
+  - Gestión de licencias de IA
 
 # Perfiles en otros sitios (sameAs). Es lo que le confirma a Google
 # que todas estas cuentas son de la misma persona.
