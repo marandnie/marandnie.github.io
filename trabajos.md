@@ -11,21 +11,35 @@
 layout: page
 title: Trabajos
 permalink: /work/
-description: "Proyectos de Marina Nieto: Cine Hoy, Tramoya, Matemática III clase por clase, un quiz de SPD y calculadoras web (hexadecimal/binario/decimal, vitamina D y B12)."
+description: "Proyectos de Marina Nieto: Amigo Invisible, Curly Check, Cine Hoy, la agenda del Teatro Flores, Tramoya, material de la UNSAM y calculadoras web."
 ---
+
+## Apps y sitios
+
+[Amigo Invisible](https://amigoinvisible.com.ar/): sorteo de amigo invisible online y gratis. Cada participante se suma con su link, se pueden excluir parejas y nadie ve a quién le tocó a los demás, ni siquiera quien organiza.
+
+[Curly Check](https://mandieto.com.ar/curlycheck/): app para escanear productos capilares (por código de barras, foto de la etiqueta o nombre) y saber si cumplen el Método Curly.
+
+[Cine Hoy](https://cine.mandieto.com.ar/): cartelera del día para anotar qué películas ver.
+
+[Agenda del Teatro Flores](https://teatroflores.mandieto.com.ar/): agenda no oficial de los próximos shows del Teatro Flores, con calendario para suscribirse, canal de Telegram y un bot que avisa cuando toca tu banda.
+
+[Tramoya](https://tramoya.mandieto.com.ar/): turnos de arme y desarme de escenografía para grupos de teatro.
+
+[Claudio O. Nieto, consultor](https://estudionieto.com.ar/): sitio profesional para un consultor de entidades financieras (normativa BCRA, auditoría y control financiero).
+
+## Facultad
+
+[Matemática III, clase por clase](https://mandieto.com.ar/mate-3/): carrusel con los temas de cada clase (Python, NumPy, Pandas, grafos, regex y regresión lineal), los parciales y el TP final de la materia en la UNSAM.
+
+[SPD - Primer Parcial](https://mandieto.com.ar/spd/primer-parcial/): quiz para practicar el primer parcial de SPD.
+
+## Calculadoras
 
 [Convertidor hexadecimal, binario y decimal](https://mandieto.com.ar/hexadecimal/): conversión al instante, tabla de equivalencias y tablas de suma y multiplicación hexadecimal.
 
 [Calculadora de vitamina D](https://mandieto.com.ar/vitamina-d/): equivalencias entre UI, µg y mg, con la dosis diaria recomendada.
 
 [Calculadora de vitamina B12](https://mandieto.com.ar/b12/): equivalencias entre µg, mcg y mg, % del valor diario y dosis recomendada para veganos.
-
-[SPD - Primer Parcial](https://mandieto.com.ar/spd/primer-parcial/): quiz para practicar el primer parcial de SPD.
-
-[Matemática III, clase por clase](https://mandieto.com.ar/mate-3/): carrusel con los temas de cada clase (Python, NumPy, Pandas, grafos, regex y regresión lineal), los parciales y el TP final de la materia en la UNSAM.
-
-[Cine Hoy](https://cine.mandieto.com.ar/): cartelera del día para anotar qué películas ver.
-
-[Tramoya](https://tramoya.mandieto.com.ar/): turnos de arme y desarme de escenografía para grupos de teatro.
 
 Mi trabajo en FinOps y mi trayectoria están en [Sobre mí]({{ '/about/' | relative_url }}).
