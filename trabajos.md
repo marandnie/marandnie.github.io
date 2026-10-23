@@ -28,6 +28,10 @@ description: "Proyectos de Marina Nieto: Amigo Invisible, Curly Check, Cine Hoy,
 
 [Claudio O. Nieto, consultor](https://estudionieto.com.ar/): sitio profesional para un consultor de entidades financieras (normativa BCRA, auditoría y control financiero).
 
+## Para la comunidad
+
+[CDD de Correo Argentino en CABA](https://mandieto.com.ar/correo-argentino-cdd/): dónde queda cada Centro de Distribución Domiciliaria, para ir a retirar un envío cuando el aviso trae solo el número.
+
 ## Facultad
 
 [Matemática III, clase por clase](https://mandieto.com.ar/mate-3/): carrusel con los temas de cada clase (Python, NumPy, Pandas, grafos, regex y regresión lineal), los parciales y el TP final de la materia en la UNSAM.

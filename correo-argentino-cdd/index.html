@@ -1,0 +1,119 @@
+---
+layout: page
+title: "CDD de Correo Argentino en CABA: dónde queda cada uno"
+permalink: /correo-argentino-cdd/
+description: "Direcciones de los Centros de Distribución Domiciliaria (CDD) de Correo Argentino en la Ciudad de Buenos Aires, por número: CDD 5, 6, 7, 13, 17, 23, 24, 28, 40 y más."
+actualizado: octubre de 2026
+# Usuario de cafecito.app (lo que va después de cafecito.app/). Vacío = no se muestra el botón.
+cafecito_usuario: ""
+---
+
+<style>
+  #cdd { max-width: 720px; }
+  #cdd .card { padding: 16px 20px; margin: 0 0 20px; border: 1px solid #ddd; border-radius: 8px; background: #fafafa; }
+  #cdd .card p:last-child, #cdd .card ul:last-child { margin-bottom: 0; }
+  #cdd label { display: block; font-weight: bold; margin: 0 0 6px; }
+  #cdd input[type="search"] { width: 100%; box-sizing: border-box; padding: 8px 10px; border: 1px solid #ccc; border-radius: 4px; font: inherit; }
+  #cdd table { width: 100%; border: 0; border-collapse: collapse; margin: 0 0 8px; }
+  #cdd th, #cdd td { padding: 10px 8px; border: 0; border-bottom: 1px solid #e5e5e5; text-align: left; vertical-align: top; background: none; }
+  #cdd th { font-size: 14px; color: #666; border-bottom: 2px solid #ddd; }
+  #cdd td.num { font-weight: bold; white-space: nowrap; width: 1%; }
+  #cdd td small { display: block; color: #666; margin-top: 2px; line-height: 1.4; }
+  #cdd .tag { display: inline-block; font-size: 12px; padding: 0 6px; border-radius: 4px; background: #fff4d6; border: 1px solid #f0d58a; color: #6b5200; margin-left: 4px; }
+  #cdd .vacio { color: #666; font-style: italic; }
+  #cdd .comunidad { background: #eef5ff; border-color: #c9dcf5; }
+  #cdd .meta { font-size: 14px; color: #666; }
+</style>
+
+<div id="cdd">
+
+<p>Si el seguimiento de tu envío dice que está en el <strong>«CDD 17»</strong> o te dejaron un aviso de visita, el paquete quedó en un <strong>Centro de Distribución Domiciliaria (CDD)</strong> de Correo Argentino y lo tenés que ir a retirar ahí. El problema: Correo Argentino no publica en su web dónde queda cada CDD (en el buscador de sucursales no aparecen) y el aviso muchas veces trae solo el número.</p>
+
+<div class="card comunidad">
+  <p><strong>Servicio a la comunidad</strong>, debido a la falta de información por parte de Correo Argentino. Armé este listado con lo que fui encontrando para que nadie tenga que adivinar adónde ir.</p>
+  {%- if page.cafecito_usuario != "" %}
+  <p>Si querés colaborar o invitarme un cafecito por el servicio brindado, acá está mi link:</p>
+  <p><a href="https://cafecito.app/{{ page.cafecito_usuario }}" rel="noopener" target="_blank"><img srcset="https://cdn.cafecito.app/imgs/buttons/button_1.png 1x, https://cdn.cafecito.app/imgs/buttons/button_1_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_1_3.75x.png 3.75x" src="https://cdn.cafecito.app/imgs/buttons/button_1.png" alt="Invitame un café en cafecito.app" width="152" height="40"></a></p>
+  {%- endif %}
+</div>
+
+<div class="card">
+  <label for="buscar-cdd">Buscá por número o barrio</label>
+  <input type="search" id="buscar-cdd" placeholder="Ej.: 17, CDD 05, Flores" autocomplete="off" inputmode="search">
+</div>
+
+<table>
+  <thead>
+    <tr><th scope="col">CDD</th><th scope="col">Dirección</th><th scope="col">Barrio</th></tr>
+  </thead>
+  <tbody id="lista-cdd">
+  {%- for c in site.data.cdd %}
+    {%- capture consulta %}{{ c.direccion }}, Ciudad Autónoma de Buenos Aires{% endcapture %}
+    <tr data-numero="{{ c.numero }}" data-texto="{{ c.direccion | append: ' ' | append: c.barrio | downcase | escape }}">
+      <td class="num">CDD {{ c.numero }}</td>
+      <td>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query={{ consulta | url_encode }}" target="_blank" rel="noopener">{{ c.direccion }}</a>
+        {%- if c.confirmado == false %}<span class="tag">sin confirmar</span>{% endif %}
+        {%- if c.nota %}<small>{{ c.nota }}</small>{% endif %}
+        <small>Fuente: {{ c.fuente }}.</small>
+      </td>
+      <td>{{ c.barrio }}</td>
+    </tr>
+  {%- endfor %}
+  </tbody>
+</table>
+<p id="sin-resultados" class="vacio" hidden>No tengo ese CDD en la lista todavía. Si sabés dónde queda, avisame (más abajo te digo cómo).</p>
+
+<p class="meta">Última actualización: {{ page.actualizado }}. Datos tomados del cartel pegado en la puerta del CDD 6 Flores, del <a href="https://www.correoargentino.com.ar/formularios/sucursales" target="_blank" rel="noopener">buscador de sucursales de Correo Argentino</a> y de las fichas de Google Maps de cada centro.</p>
+
+<div class="card">
+<h3>Antes de ir</h3>
+<ul>
+  <li>Los horarios cambian seguido y no siempre coinciden con los de Google Maps. La mayoría atiende de lunes a viernes, más o menos de 10 a 17. Ante la duda, llamá al <a href="tel:08107777787">0810-777-7787</a> (atención al cliente de Correo Argentino).</li>
+  <li>Llevá tu DNI y el número de seguimiento o el aviso de visita.</li>
+  <li>Si va otra persona en tu lugar, que lleve una autorización firmada por vos y una copia de tu DNI. Para documentos y tarjetas pueden pedir más requisitos.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>¿Falta un CDD o cambió una dirección?</h3>
+<p>Escribime a <a href="mailto:{{ site.email }}?subject=CDD%20de%20Correo%20Argentino">{{ site.email }}</a> con el número y la dirección (si tenés una foto del cartel, mejor) y lo sumo a la lista.</p>
+</div>
+
+<p class="meta">Este sitio no tiene relación con Correo Argentino. La información puede tener errores: confirmá antes de ir.</p>
+
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('buscar-cdd');
+  var filas = document.querySelectorAll('#lista-cdd tr');
+  var vacio = document.getElementById('sin-resultados');
+
+  function normalizar(s) {
+    return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  }
+
+  input.addEventListener('input', function () {
+    // "CDD 05", "cdd17", "n° 5" y "5" buscan el mismo número
+    var q = normalizar(input.value).replace(/cdd|n[°º]/g, ' ').replace(/\s+/g, ' ').trim();
+    var digitos = q.replace(/\D/g, '').replace(/^0+(?=\d)/, '');
+    var soloNumero = /^[\d\s°º#.-]+$/.test(q);
+    var visibles = 0;
+
+    filas.forEach(function (fila) {
+      var ok = true;
+      if (soloNumero) {
+        ok = fila.dataset.numero === digitos;
+      } else if (q) {
+        ok = normalizar(fila.dataset.texto).indexOf(q) !== -1 ||
+             (digitos && fila.dataset.numero === digitos);
+      }
+      fila.hidden = !ok;
+      if (ok) visibles++;
+    });
+
+    vacio.hidden = visibles > 0;
+  });
+})();
+</script>

@@ -1,0 +1,76 @@
+# Centros de Distribución Domiciliaria (CDD) de Correo Argentino en CABA.
+# Lo usa la página /correo-argentino-cdd/ (correo-argentino-cdd.md).
+#
+# Para agregar o corregir un CDD, editá esta lista (ordenada por número):
+#   numero:    número del CDD, sin ceros adelante
+#   direccion: calle y altura, como figura en el cartel o en Google Maps
+#   barrio:    barrio de la Ciudad
+#   nota:      opcional, aclaraciones para quien va a retirar
+#   fuente:    de dónde salió el dato
+#   confirmado: false si el dato viene de una sola fuente poco confiable
+
+- numero: 5
+  direccion: Antonio Machado 649
+  barrio: Caballito
+  nota: Cerca del Parque Centenario.
+  fuente: Cartel del CDD 6 y Google Maps
+  confirmado: true
+
+- numero: 6
+  direccion: Av. Juan Bautista Alberdi 3177
+  barrio: Flores
+  fuente: Cartel en la puerta y Google Maps
+  confirmado: true
+
+- numero: 7
+  direccion: Av. Carrasco 31
+  barrio: Floresta
+  nota: Misma dirección que la sucursal Floresta.
+  fuente: Cartel del CDD 6 y buscador de sucursales de Correo Argentino
+  confirmado: true
+
+- numero: 13
+  direccion: Mario Bravo 492
+  barrio: Almagro
+  nota: Según reseñas de Google Maps, se entra por Mario Bravo 496 y se baja al segundo subsuelo.
+  fuente: Google Maps
+  confirmado: true
+
+- numero: 17
+  direccion: Helguera 2901
+  barrio: Villa del Parque
+  nota: Misma dirección que la sucursal Villa del Parque.
+  fuente: Cartel del CDD 6 y buscador de sucursales de Correo Argentino
+  confirmado: true
+
+- numero: 23
+  direccion: La Rioja 1189
+  barrio: San Cristóbal
+  fuente: Google Maps
+  confirmado: true
+
+- numero: 24
+  direccion: Pasaje Craig 805
+  barrio: Parque Chacabuco
+  fuente: Google Maps
+  confirmado: true
+
+- numero: 27
+  direccion: Virrey Arredondo 2959
+  barrio: Colegiales
+  fuente: Listado de sucursales no oficial
+  confirmado: false
+
+- numero: 28
+  direccion: Av. Cabildo 2351
+  barrio: Belgrano
+  nota: Al lado de la sucursal Belgrano (Av. Cabildo 2349).
+  fuente: Google Maps
+  confirmado: true
+
+- numero: 40
+  direccion: Av. Juan Bautista Alberdi 5924
+  barrio: Mataderos
+  nota: Misma dirección que la sucursal Mataderos.
+  fuente: Cartel del CDD 6, Google Maps y buscador de sucursales de Correo Argentino
+  confirmado: true
